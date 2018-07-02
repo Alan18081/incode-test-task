@@ -3,7 +3,7 @@ import {FETCH_CLIENTS_SUCCESS,GET_ACTIVE_CLIENT} from '../actions/types';
 
 const initialState = fromJS({
   clients: fromJS([]),
-  activeClient: fromJS({}),
+  activeClient: null,
   foundClients: fromJS([])
 });
 

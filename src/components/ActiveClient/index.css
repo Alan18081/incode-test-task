@@ -1,3 +1,18 @@
 .ActiveClient {
-  display: flex;
+  flex-grow: 1;
+  margin-left: 20px !important;
+  margin-top: 0 !important;
 }
+
+.ActiveClient__content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.ActiveClient__image {
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+
+

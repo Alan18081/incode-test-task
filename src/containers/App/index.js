@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {fetchClients,getActiveClient} from '../actions';
+import {fetchClients,getActiveClient} from '../../actions/index';
 
-import ClientsList from '../components/ClientsList/index';
+import './index.css';
+
+import ClientsList from '../../components/ClientsList/index';
+import ActiveClient from '../../components/ActiveClient/index';
 
 class App extends Component {
   componentDidMount() {
@@ -12,10 +15,11 @@ class App extends Component {
     this.props.onGetActiveClient(index);
   };
   render() {
-    const {clients} = this.props;
+    const {clients,activeClient} = this.props;
     return (
-      <div>
+      <div className="App">
         <ClientsList clients={clients} chooseClient={this.handleChooseClient}/>
+        {activeClient && <ActiveClient client={activeClient}/>}
       </div>
     );
   }
