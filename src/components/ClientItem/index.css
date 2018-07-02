@@ -1,0 +1,7 @@
+.ClientItem {
+  display: flex;
+}
+
+.ClientItem__text {
+  margin-left: 10px;
+}
