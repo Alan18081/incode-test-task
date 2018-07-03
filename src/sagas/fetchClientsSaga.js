@@ -13,7 +13,7 @@ export function* fetchClientsSaga() {
   try {
     const {data} = yield call(
       axios.get,
-      'https://api.myjson.com/bins/13e3jm',);
+      'https://api.myjson.com/bins/13e3jm');
     yield put(fetchClientsSuccess(data));
   }
   catch(err) {
