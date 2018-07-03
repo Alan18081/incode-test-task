@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {fetchClients,getActiveClient} from '../../actions/index';
+import {fetchClients,getActiveClient,search} from '../../actions/index';
+import {selectFoundClients} from '../../selectors';
 
 import './index.css';
 
 import ClientsList from '../../components/ClientsList/index';
 import ActiveClient from '../../components/ActiveClient/index';
+import Search from '../../components/Search';
 
 class App extends Component {
   componentDidMount() {
@@ -14,11 +16,18 @@ class App extends Component {
   handleChooseClient = index => {
     this.props.onGetActiveClient(index);
   };
+  handleSearch = event => {
+    const value = event.target.value;
+    this.props.onSearch(value);
+  };
   render() {
-    const {clients,activeClient} = this.props;
+    const {clients,activeClient,foundClients,query} = this.props;
     return (
       <div className="App">
-        <ClientsList clients={clients} chooseClient={this.handleChooseClient}/>
+        <div className="App__sidebar">
+          <Search handleSearch={this.handleSearch}/>
+          <ClientsList clients={query ? foundClients : clients} chooseClient={this.handleChooseClient}/>
+        </div>
         {activeClient && <ActiveClient client={activeClient}/>}
       </div>
     );
@@ -27,12 +36,15 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   clients: state.get('clients'),
-  activeClient: state.get('activeClient')
+  activeClient: state.get('activeClient'),
+  foundClients: selectFoundClients(state),
+  query: state.get('query')
 });
 
 const mapDispatchToProps = dispatch => ({
   onFetchClients: () => dispatch(fetchClients()),
-  onGetActiveClient: (index) => dispatch(getActiveClient(index))
+  onGetActiveClient: (index) => dispatch(getActiveClient(index)),
+  onSearch: (query) => dispatch(search(query))
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);

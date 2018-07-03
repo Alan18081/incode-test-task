@@ -1,10 +1,10 @@
 import {fromJS} from 'immutable';
-import {FETCH_CLIENTS_SUCCESS,GET_ACTIVE_CLIENT} from '../actions/types';
+import {FETCH_CLIENTS_SUCCESS,GET_ACTIVE_CLIENT,SEARCH} from '../actions/types';
 
 const initialState = fromJS({
   clients: fromJS([]),
   activeClient: null,
-  foundClients: fromJS([])
+  query: ''
 });
 
 export default (state = initialState, {type,payload}) => {
@@ -17,6 +17,8 @@ export default (state = initialState, {type,payload}) => {
         state.get('clients')
           .find(client => client.get('general').get('avatar') === payload)
       );
+    case SEARCH:
+      return state.set('query',payload);
     default:
       return state;
   }

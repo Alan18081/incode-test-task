@@ -2,7 +2,8 @@ import {
   FETCH_CLIENTS,
   FETCH_CLIENTS_SUCCESS,
   FETCH_CLIENTS_FAILED,
-  GET_ACTIVE_CLIENT
+  GET_ACTIVE_CLIENT,
+  SEARCH
 } from './types';
 
 export const fetchClients = () => ({
@@ -21,4 +22,9 @@ export const fetchClientsFailed = () => ({
 export const getActiveClient = index => ({
   type: GET_ACTIVE_CLIENT,
   payload: index
+});
+
+export const search = query => ({
+  type: SEARCH,
+  payload: query
 });
