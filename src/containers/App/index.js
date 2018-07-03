@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {fetchClients,getActiveClient,search} from '../../actions/index';
 import {selectFoundClients} from '../../selectors';
 import PropTypes from 'prop-types';
+import {Dimmer,Loader} from 'semantic-ui-react';
 
 import './index.css';
 
@@ -23,15 +24,23 @@ export class App extends Component {
   };
   render() {
     const {clients,activeClient,foundClients,query} = this.props;
-    return (
-      <div className="App">
-        <div className="App__sidebar">
-          <Search handleSearch={this.handleSearch}/>
-          <ClientsList clients={query ? foundClients : clients} chooseClient={this.handleChooseClient}/>
-        </div>
-        {activeClient && <ActiveClient client={activeClient}/>}
-      </div>
+    let content = (
+      <Dimmer active inverted>
+        <Loader size='big'>Loading clients</Loader>
+      </Dimmer>
     );
+    if(clients.size > 0) {
+      content = (
+        <div className="App">
+          <div className="App__sidebar">
+            <Search handleSearch={this.handleSearch}/>
+            <ClientsList clients={query ? foundClients : clients} chooseClient={this.handleChooseClient}/>
+          </div>
+          {activeClient && <ActiveClient client={activeClient}/>}
+        </div>
+      )
+    }
+    return content;
   }
 }
 
