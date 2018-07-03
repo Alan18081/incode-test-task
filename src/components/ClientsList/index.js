@@ -20,7 +20,8 @@ const ClientsList = ({clients,chooseClient,activeId}) => (
 
 ClientsList.propTypes = {
   clients: PropTypes.object.isRequired,
-  chooseClient: PropTypes.func.isRequired
+  chooseClient: PropTypes.func.isRequired,
+  activeId: PropTypes.string.isRequired
 };
 
 export default ClientsList;

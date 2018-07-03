@@ -35,7 +35,8 @@ const ClientItem = ({client,clicked,activeId}) => (
 
 ClientItem.propTypes = {
   client: PropTypes.object.isRequired,
-  clicked: PropTypes.func.isRequired
+  clicked: PropTypes.func.isRequired,
+  activeId: PropTypes.string.isRequired
 };
 
 export default ClientItem;
