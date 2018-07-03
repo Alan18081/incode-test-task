@@ -32,7 +32,7 @@ const ActiveClient = ({client}) => (
           <ListItem>{client.get('address').get('street')}</ListItem>
           <ListItem>{client.get('address').get('city')}</ListItem>
           <ListItem>{client.get('address').get('zipCode')}</ListItem>
-          <ListItem>{client.get('address').get('company')}</ListItem>
+          <ListItem>{client.get('address').get('country')}</ListItem>
         </List>
       </div>
     </CardContent>

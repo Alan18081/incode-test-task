@@ -1,4 +1,5 @@
 .ClientsList {
-  height: 90vh;
   overflow-y: auto;
+  padding: 4px 2px !important;
+  height: 80vh;
 }
