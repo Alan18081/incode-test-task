@@ -10,7 +10,7 @@ import ClientsList from '../../components/ClientsList/index';
 import ActiveClient from '../../components/ActiveClient/index';
 import Search from '../../components/Search';
 
-class App extends Component {
+export class App extends Component {
   componentDidMount() {
     this.props.onFetchClients();
   }
@@ -34,8 +34,6 @@ class App extends Component {
     );
   }
 }
-
-
 
 const mapStateToProps = state => ({
   clients: state.get('clients'),
