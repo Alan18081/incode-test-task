@@ -5,7 +5,8 @@ import {
 } from '../actions/types';
 import {
   fetchClientsSuccess,
-  fetchClientsFailed
+  fetchClientsFailed,
+  getActiveClient
 } from '../actions';
 
 export function* fetchClientsSaga() {
@@ -15,6 +16,7 @@ export function* fetchClientsSaga() {
       axios.get,
       'https://api.myjson.com/bins/13e3jm');
     yield put(fetchClientsSuccess(data));
+    yield put(getActiveClient(data[0].general.avatar));
   }
   catch(err) {
     console.log(err);

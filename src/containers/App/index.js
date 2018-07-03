@@ -34,7 +34,11 @@ export class App extends Component {
         <div className="App">
           <div className="App__sidebar">
             <Search handleSearch={this.handleSearch}/>
-            <ClientsList clients={query ? foundClients : clients} chooseClient={this.handleChooseClient}/>
+            <ClientsList
+              clients={query ? foundClients : clients}
+              chooseClient={this.handleChooseClient}
+              activeId={activeClient && activeClient.get('general').get('avatar')}
+            />
           </div>
           {activeClient && <ActiveClient client={activeClient}/>}
         </div>

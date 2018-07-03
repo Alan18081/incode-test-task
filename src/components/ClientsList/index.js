@@ -5,13 +5,14 @@ import './index.css';
 
 import ClientItem from '../ClientItem/index';
 
-const ClientsList = ({clients,chooseClient}) => (
+const ClientsList = ({clients,chooseClient,activeId}) => (
   <List className="ClientsList">
     {clients.map(client => (
       <ClientItem
         key={client.get('general').get('avatar')}
         client={client}
         clicked={() => chooseClient(client.get('general').get('avatar'))}
+        activeId={activeId}
       />
     ))}
   </List>

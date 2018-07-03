@@ -1,5 +1,9 @@
-.ClientItem {
+.ClientItem__content {
   display: flex;
+}
+
+.ClientItem_active {
+  background: #ecbef3 !important;
 }
 
 .ClientItem__text {

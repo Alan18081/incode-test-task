@@ -11,10 +11,16 @@ import {
 import PropTypes from 'prop-types';
 import './index.css';
 
-const ClientItem = ({client,clicked}) => (
-  <Card onClick={clicked}>
+const ClientItem = ({client,clicked,activeId}) => (
+  <Card
+    onClick={clicked}
+    className={[
+      'ClientItem',
+      activeId === client.get('general').get('avatar') ? 'ClientItem_active' : ''
+    ].join(' ')}
+  >
     <CardContent>
-      <Item className="ClientItem">
+      <Item className="ClientItem__content">
         <ItemImage src={client.get('general').get('avatar')} size="mini" circular/>
         <ItemContent className="ClientItem__text">
           <ItemHeader>
