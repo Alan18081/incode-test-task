@@ -1,9 +1,9 @@
 import React from 'react';
 import {Item,Card,CardContent} from 'semantic-ui-react';
-
+import PropTypes from 'prop-types';
 import './index.css';
 
-export default ({client,clicked}) => (
+const ClientItem = ({client,clicked}) => (
   <Card onClick={clicked}>
     <CardContent>
       <Item className="ClientItem">
@@ -18,3 +18,10 @@ export default ({client,clicked}) => (
     </CardContent>
   </Card>
 );
+
+ClientItem.propTypes = {
+  client: PropTypes.object.isRequired,
+  clicked: PropTypes.func.isRequired
+};
+
+export default ClientItem;

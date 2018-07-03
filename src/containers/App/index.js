@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {fetchClients,getActiveClient,search} from '../../actions/index';
 import {selectFoundClients} from '../../selectors';
+import PropTypes from 'prop-types';
 
 import './index.css';
 
@@ -34,6 +35,8 @@ class App extends Component {
   }
 }
 
+
+
 const mapStateToProps = state => ({
   clients: state.get('clients'),
   activeClient: state.get('activeClient'),
@@ -43,8 +46,17 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onFetchClients: () => dispatch(fetchClients()),
-  onGetActiveClient: (index) => dispatch(getActiveClient(index)),
-  onSearch: (query) => dispatch(search(query))
+  onGetActiveClient: index => dispatch(getActiveClient(index)),
+  onSearch: query => dispatch(search(query))
 });
+
+App.propTypes = {
+  clients: PropTypes.object.isRequired,
+  foundClients: PropTypes.object.isRequired,
+  query: PropTypes.string.isRequired,
+  onFetchClients: PropTypes.func.isRequired,
+  onGetActiveClient: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);

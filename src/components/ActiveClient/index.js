@@ -1,9 +1,9 @@
 import React from 'react';
 import {Card,CardContent,Image,CardHeader,CardMeta,Header,Icon,List,ListItem} from 'semantic-ui-react';
-
+import PropTypes from 'prop-types';
 import './index.css';
 
-export default ({client}) => (
+const ActiveClient = ({client}) => (
   <Card className="ActiveClient">
     <CardContent className="ActiveClient__content">
       <Image src={client.get('general').get('avatar')} size="small" className="ActiveClient__image"/>
@@ -38,3 +38,9 @@ export default ({client}) => (
     </CardContent>
   </Card>
 );
+
+ActiveClient.propTypes = {
+  client: PropTypes.object.isRequired
+};
+
+export default ActiveClient;
